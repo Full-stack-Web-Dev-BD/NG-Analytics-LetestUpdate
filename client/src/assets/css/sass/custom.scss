@@ -26,11 +26,11 @@
 // Geo map  page css
 .geo-info-block {
     position: relative;
-    .side-devider{
+    .side-devider {
         position: absolute;
-        width:1px;
-        height:60px;
-        background:lightgray;
+        width: 1px;
+        height: 60px;
+        background: lightgray;
         top: 50%;
         right: 0;
         transform: translate(-50%, -50%);
@@ -355,4 +355,18 @@
 }
 .w-100 {
     width: 100% !important;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .geo-info-icon-box {
+        right: 10px;
+        span {
+            font-size: 25px;
+        }
+    }
+    .mb-md-80 {
+        margin-bottom: 80px !important;
+    }
+}
+@media (min-width: 0px) and (max-width: 499px) {
 }

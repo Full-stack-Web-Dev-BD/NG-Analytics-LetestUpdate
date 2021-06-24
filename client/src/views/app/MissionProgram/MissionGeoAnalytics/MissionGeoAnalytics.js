@@ -4,10 +4,9 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 import { Badge, Button, Card, CardBody, CardTitle, Input } from 'reactstrap';
 import FoodTable from '../../ActivityDashboard/FoodTable';
 import GeoMissionActivityChart from './GeoMissionActivityChart';
-import DangerMarker from './Map/components/DangerMarker';
 import * as XLSX from 'xlsx';
 import axios from 'axios';
-import PieChart from './PieChart';
+import Markers1 from './Map/components/Markers1';
 
 const MissionGeoAnalytics = () => {
   const [map, setMap] = useState(null);
@@ -18,13 +17,13 @@ const MissionGeoAnalytics = () => {
   const [data, setData] = useState([]);
   const [uploaded, setUploaded] = useState(false);
   const [projects, setProjects] = useState([]);
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(true);
   useEffect(() => {
     // get  data
     axios
       .get('http://localhost:5000/api/project/getprojectdata')
       .then((res) => {
-        console.log('backend data is ', res.data);
+        console.log(res.data);
         setShowMap(true);
         setProjects(res.data);
       });
@@ -304,7 +303,7 @@ const MissionGeoAnalytics = () => {
   return (
     <div>
       <div>
-        <div className="col-sm-12 col-md-4 complexregoin ">
+        <div className="col-sm-12  complexregoin ">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
               <button
@@ -374,16 +373,16 @@ const MissionGeoAnalytics = () => {
         <Card>
           <CardBody>
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-xl-3 col-md-6 col-sm-12  mb-5 mb-md-80">
                 <div className="geo-info-block">
-                  <div className="side-devider"></div>
+                  <div className="side-devider d-lg-block d-xs-none"></div>
                   <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-3 col-sm-3 col-xs-3 ">
                       <div className="geo-info-icon-box">
                         <span className=" glyph-icon simple-icon-compass"></span>
                       </div>
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-9 col-sm-9  col-xs-9 ">
                       <div className="geo-info-side">
                         <h1 className="text-info">
                           {randomnumbergenerator(2, 500)}
@@ -409,16 +408,16 @@ const MissionGeoAnalytics = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-xl-3 col-md-6 col-sm-12  mb-5 mb-md-80">
                 <div className="geo-info-block">
-                  <div className="side-devider"></div>
+                  <div className="side-devider d-lg-block d-xs-none d-md-none"></div>
                   <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-3 col-sm-3 col-xs-3 ">
                       <div className="geo-info-icon-box">
                         <span className=" glyph-icon simple-icon-exclamation"></span>
                       </div>
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-9 col-sm-9  col-xs-9 ">
                       <div className="geo-info-side">
                         <h1 className="text-info">
                           {randomnumbergenerator(2, 500)}
@@ -444,16 +443,16 @@ const MissionGeoAnalytics = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-xl-3 col-md-6 col-sm-12  mb-5 ">
                 <div className="geo-info-block">
-                  <div className="side-devider"></div>
+                  <div className="side-devider d-lg-block d-xs-none"></div>
                   <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-3 col-sm-3 col-xs-3 ">
                       <div className="geo-info-icon-box">
                         <span className=" glyph-icon simple-icon-check"></span>
                       </div>
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-9 col-sm-9  col-xs-9 ">
                       <div className="geo-info-side">
                         <h1 className="text-info">
                           {randomnumbergenerator(2, 500)}
@@ -479,7 +478,7 @@ const MissionGeoAnalytics = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-xl-3 col-md-6 col-sm-12  mb-5  ">
                 <div className="geo-info-block">
                   <GeoMissionActivityChart />
                 </div>
@@ -489,296 +488,325 @@ const MissionGeoAnalytics = () => {
         </Card>
       </div>
       <div className="row">
-        <div className="col-md-8 mb-4">
-          {/* Map Side (Top)  */}
-          <div className="map-side" style={{ position: 'relative' }}>
-            <h1
-              style={{
-                position: 'absolute',
-                top: '20px',
-                left: '50%',
-                zIndex: 99999,
-                transform: 'translate(-50%)',
-                color: '#656565',
-                fontFamily: 'Nunito',
-              }}
-            >
-              Analytics Map ( Nigeria )
-              {/* <Input
-                required
-                onChange={(e) => handleFileUpload(e)}
-                id="ImportarClientes "
-                accept=".xlsx"
-                className="form-control"
-                type="file"
-              /> */}
-              {/* <Button
-                onClick={(e) =>
-                  document.getElementById('ImportarClientes').click()
-                }
-                className=" ml-4 default"
-                color="success"
-              >
-                {''}
-                Upload Data
-                <span className="iconsminds-file-copy"></span>{' '}
-              </Button> */}
-            </h1>
-            <div className="leaflet-container">
-              {showMap ? (
-                <>
-                  {projects.length > 0 ? (
-                    <MapContainer
-                      // scrollWheelZoom={false}
-                      whenCreated={setMap}
-                      center={{ lat: 3.551223, lng: 28.356148 }}
-                      zoom={4}
-                    >
-                      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                      <DangerMarker
-                        selectedState={selectedState}
-                        projects={projects}
-                      />
-                    </MapContainer>
-                  ) : (
-                    ''
-                  )}
-                </>
-              ) : (
-                ''
-              )}
-            </div>
-            <div className="row mt-5">
-              <div className="col-md-4">
-                <PieChart />
-              </div>
-              <div className="col-md-4"></div>
-            </div>
-          </div>
-          {/* Map status side (Bottom) */}
-          <div className="map-status-bar mt-4">
-            <div className="map-status-bar-container row">
-              <div className="status-item col-md-1"></div>
-              <div className="status-item col-md-2 text-center">
-                <div className="status-icon">
-                  <div
-                    className="icon-container"
-                    style={{
-                      position: 'relative',
-                      width: '50px',
-                      height: '50px',
-                      display: 'inline-block',
-                      color: '#1F9DDB',
-                      border: '2px solid #1F9DDB',
-                      borderRadius: '100px',
-                      backgroundColor: 'transparent',
-                    }}
-                  >
-                    <span
-                      className="glyph-icon  simple-icon-organization "
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        fontSize: '26px',
-                      }}
-                    ></span>
+        <div className="col-md-6 mb-5">
+          <Card className="h-100">
+            <CardBody>
+              <div className="ovaral-portfolio-details">
+                <div className="row"></div>
+                <div className="top-content-details">
+                  <div className="single-details mb-3 row">
+                    <div className="col-md-2">
+                      <div className=" left-icon-holder ">
+                        <span className="glyph-icon simple-icon-layers"></span>
+                      </div>
+                    </div>
+                    <div className="col-md-10 text-left ">
+                      <h2>Ovarall Portfolio : US $5 Billion</h2>
+                    </div>
+                  </div>
+                  <div className="single-details mb-3 row">
+                    <div className="col-md-2">
+                      <div className=" left-icon-holder ">
+                        <span className="glyph-icon simple-icon-layers"></span>
+                      </div>
+                    </div>
+                    <div className="col-md-10 text-left ">
+                      <h2>Ovarall Portfolio : US $5 Billion</h2>
+                    </div>
                   </div>
                 </div>
-                <div className="status-text">
-                  <h5 style={{ color: '#1F9DDB' }}>This is text</h5>
-                </div>
-              </div>
-              <div className="status-item col-md-2 text-center">
-                <div className="status-icon">
-                  <div
-                    className="icon-container"
-                    style={{
-                      position: 'relative',
-                      width: '50px',
-                      height: '50px',
-                      display: 'inline-block',
-                      color: '#6EAA27',
-                      border: '2px solid #6EAA27',
-                      borderRadius: '100px',
-                      backgroundColor: 'transparent',
-                    }}
-                  >
-                    <span
-                      className="glyph-icon simple-icon-directions"
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        fontSize: '26px',
-                      }}
-                    ></span>
-                  </div>
-                </div>
-                <div className="status-text">
-                  <h5 style={{ color: '#6EAA27' }}>This is text</h5>
-                </div>
-              </div>
-              <div className="status-item col-md-2 text-center">
-                <div className="status-icon">
-                  <div
-                    className="icon-container"
-                    style={{
-                      position: 'relative',
-                      width: '50px',
-                      height: '50px',
-                      display: 'inline-block',
-                      color: '#B9AC15',
-                      border: '2px solid #B9AC15',
-                      borderRadius: '100px',
-                      backgroundColor: 'transparent',
-                    }}
-                  >
-                    <span
-                      className="glyph-icon simple-icon-directions"
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        fontSize: '26px',
-                      }}
-                    ></span>
-                  </div>
-                </div>
-                <div className="status-text">
-                  <h5 style={{ color: '#B9AC15' }}>This is text</h5>
-                </div>
-              </div>
-              <div className="status-item col-md-2 text-center">
-                <div className="status-icon">
-                  <div
-                    className="icon-container"
-                    style={{
-                      position: 'relative',
-                      width: '50px',
-                      height: '50px',
-                      display: 'inline-block',
-                      color: '#FB8310',
-                      border: '2px solid #FB8310',
-                      borderRadius: '100px',
-                      backgroundColor: 'transparent',
-                    }}
-                  >
-                    <span
-                      className="glyph-icon simple-icon-crop"
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        fontSize: '26px',
-                      }}
-                    ></span>
-                  </div>
-                </div>
-                <div className="status-text">
-                  <h5 style={{ color: '#FB8310' }}>This is text</h5>
-                </div>
-              </div>
-              <div className="status-item col-md-2 text-center">
-                <div className="status-icon">
-                  <div
-                    className="icon-container"
-                    style={{
-                      position: 'relative',
-                      width: '50px',
-                      height: '50px',
-                      display: 'inline-block',
-                      color: '#B71823',
-                      border: '2px solid #B71823',
-                      borderRadius: '100px',
-                      backgroundColor: 'transparent',
-                    }}
-                  >
-                    <span
-                      className="glyph-icon  simple-icon-present"
-                      style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        fontSize: '26px',
-                      }}
-                    ></span>
-                  </div>
-                </div>
-                <div className="status-text">
-                  <h5 style={{ color: '#B71823' }}>This is text</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="mb-5 map-details">
-            <Card>
-              <CardBody>
-                <CardTitle>BY STATE</CardTitle>
-                {selectedState !== 'All' ? (
-                  <Button
-                    onClick={(e) => setSelectedState('All')}
-                    className="default "
-                    size="sm"
-                    color="success"
-                  >
-                    Clear Filter
-                  </Button>
-                ) : (
-                  ''
-                )}
-                <hr />
-                {allState.map((el) => {
-                  return (
-                    <div
-                      onClick={(e) => setter(el)}
-                      style={{
-                        padding: '10px , 10px',
-                      }}
-                      className="single-state-chart"
-                    >
-                      <div
-                        className="row"
-                        style={{
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <div className="col-md-3">
-                          <p style={{ margin: '0', whiteSpace: 'nowrap' }}>
-                            {el.stateName}
-                          </p>
-                        </div>
-                        <div className="col-md-9">
-                          <div class="progress-wrap lb-side-left  mt-2">
-                            <div class="progress-lb-wrap">
-                              <div class="progress progress-bar-xs">
-                                <div
-                                  className={`progress-bar bg-custom w-${el.width}`}
-                                  role="progressbar"
-                                  aria-valuenow="35"
-                                  aria-valuemin="0"
-                                  aria-valuemax="100"
-                                ></div>
-                              </div>
-                            </div>
-                          </div>
+                <div className="middle-content">
+                  <div className="row mb-1 ">
+                    <div className="col-md-8">
+                      <div className="tech-suport mb-3">
+                        <div className="suport-item">
+                          <h2>Sector Investment </h2>
                         </div>
                       </div>
                     </div>
-                  );
-                })}
-              </CardBody>
-            </Card>
-          </div>
+                    <div className="col-md-4">
+                      <div className="suport-item">
+                        <h2> USD 99 Million</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mb-1 ">
+                    <div className="col-md-8">
+                      <div className="tech-suport mb-3">
+                        <div className="suport-item">
+                          <h2>Sector Investment </h2>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="suport-item">
+                        <h2> USD 99 Million</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mb-1 ">
+                    <div className="col-md-8">
+                      <div className="tech-suport mb-3">
+                        <div className="suport-item">
+                          <h2>Sector Investment </h2>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="suport-item">
+                        <h2> USD 99 Million</h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="bottom-details">
+                  <div className="single-details mb-3 row">
+                    <div className="col-md-2">
+                      <div className=" left-icon-holder ">
+                        <span className="glyph-icon simple-icon-layers"></span>
+                      </div>
+                    </div>
+                    <div className="col-md-10 text-left ">
+                      <h2>US$ 3 Billion disbursed in 2010-2018</h2>
+                    </div>
+                  </div>
+
+                  <div className="single-details mb-3 row">
+                    <div className="col-md-2">
+                      <div className=" left-icon-holder ">
+                        <span className="glyph-icon simple-icon-layers"></span>
+                      </div>
+                    </div>
+                    <div className="col-md-10 text-left ">
+                      <h2>US$ 2 Billion Disbursed (Private Investment) </h2>
+                    </div>
+                  </div>
+
+                  <div className="single-details mb-3 row">
+                    <div className="col-md-2">
+                      <div className=" left-icon-holder ">
+                        <span className="glyph-icon simple-icon-layers"></span>
+                      </div>
+                    </div>
+                    <div className="col-md-10 text-left ">
+                      <h2>US$ 1 Billion Disbursed (Public Investment)</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardBody>
+          </Card>
+        </div>
+        <div className="col-md-6 mb-4">
+          <Card className="h-100">
+            <CardBody>
+              <div className="alert alert-success text-center alert-custom">
+                <h3>Ovarall Portfolio Age</h3>
+              </div>
+              <div className="map-side" style={{ position: 'relative' }}>
+                <div className="leaflet-container">
+                  <MapContainer
+                    scrollWheelZoom={false}
+                    whenCreated={setMap}
+                    center={{ lat: 9.083333, lng: 7.533333 }}
+                    zoom={5}
+                  >
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                    <Markers1 />
+                  </MapContainer>
+
+                  {/* {showMap ? (
+                    <>
+                      {projects.length > 0 ? (
+                        <MapContainer
+                          scrollWheelZoom={false}
+                          whenCreated={setMap}
+                          center={{ lat: 3.551223, lng: 28.356148 }}
+                          zoom={4}
+                        >
+                          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                          <DangerMarker
+                            selectedState={selectedState}
+                            projects={projects}
+                          />
+                          <GreenMarker />
+                          <SecenderyMarker />
+                          <WarningMarker />
+                        </MapContainer>
+                      ) : (
+                        ''
+                      )}
+                    </>
+                  ) : (
+                    ''
+                  )} */}
+                </div>
+              </div>
+              <div className="map-status-bar ">
+                <div className="map-status-bar-container row">
+                  <div className="status-item col-md-1"></div>
+                  <div className="status-item col-md-2 text-center">
+                    <div className="status-icon">
+                      <div
+                        className="icon-container"
+                        style={{
+                          position: 'relative',
+                          width: '50px',
+                          height: '50px',
+                          display: 'inline-block',
+                          color: '#1F9DDB',
+                          border: '2px solid #1F9DDB',
+                          borderRadius: '100px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <span
+                          className="glyph-icon  simple-icon-organization "
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            fontSize: '26px',
+                          }}
+                        ></span>
+                      </div>
+                    </div>
+                    <div className="status-text">
+                      <h5 style={{ color: '#1F9DDB' }}>This is text</h5>
+                    </div>
+                  </div>
+                  <div className="status-item col-md-2 text-center">
+                    <div className="status-icon">
+                      <div
+                        className="icon-container"
+                        style={{
+                          position: 'relative',
+                          width: '50px',
+                          height: '50px',
+                          display: 'inline-block',
+                          color: '#6EAA27',
+                          border: '2px solid #6EAA27',
+                          borderRadius: '100px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <span
+                          className="glyph-icon simple-icon-directions"
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            fontSize: '26px',
+                          }}
+                        ></span>
+                      </div>
+                    </div>
+                    <div className="status-text">
+                      <h5 style={{ color: '#6EAA27' }}>This is text</h5>
+                    </div>
+                  </div>
+                  <div className="status-item col-md-2 text-center">
+                    <div className="status-icon">
+                      <div
+                        className="icon-container"
+                        style={{
+                          position: 'relative',
+                          width: '50px',
+                          height: '50px',
+                          display: 'inline-block',
+                          color: '#B9AC15',
+                          border: '2px solid #B9AC15',
+                          borderRadius: '100px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <span
+                          className="glyph-icon simple-icon-directions"
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            fontSize: '26px',
+                          }}
+                        ></span>
+                      </div>
+                    </div>
+                    <div className="status-text">
+                      <h5 style={{ color: '#B9AC15' }}>This is text</h5>
+                    </div>
+                  </div>
+                  <div className="status-item col-md-2 text-center">
+                    <div className="status-icon">
+                      <div
+                        className="icon-container"
+                        style={{
+                          position: 'relative',
+                          width: '50px',
+                          height: '50px',
+                          display: 'inline-block',
+                          color: '#FB8310',
+                          border: '2px solid #FB8310',
+                          borderRadius: '100px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <span
+                          className="glyph-icon simple-icon-crop"
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            fontSize: '26px',
+                          }}
+                        ></span>
+                      </div>
+                    </div>
+                    <div className="status-text">
+                      <h5 style={{ color: '#FB8310' }}>This is text</h5>
+                    </div>
+                  </div>
+                  <div className="status-item col-md-2 text-center">
+                    <div className="status-icon">
+                      <div
+                        className="icon-container"
+                        style={{
+                          position: 'relative',
+                          width: '50px',
+                          height: '50px',
+                          display: 'inline-block',
+                          color: '#B71823',
+                          border: '2px solid #B71823',
+                          borderRadius: '100px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <span
+                          className="glyph-icon  simple-icon-present"
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            fontSize: '26px',
+                          }}
+                        ></span>
+                      </div>
+                    </div>
+                    <div className="status-text">
+                      <h5 style={{ color: '#B71823' }}>This is text</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardBody>
+          </Card>
         </div>
       </div>
+
       <div className="row">
         <div className="col-12">
           <FoodTable />

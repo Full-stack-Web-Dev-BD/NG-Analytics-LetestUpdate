@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700");
-@import "./_01_mixins.scss";
-@import "./_02_variables";
-@import "./_03_core.scss";
-@import "./_04_plugins.scss";
-@import "./_05_views.scss";
-@import "./custom.scss";
-@import "./map.scss";
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700');
+@import './_01_mixins.scss';
+@import './_02_variables';
+@import './_03_core.scss';
+@import './_04_plugins.scss';
+@import './_05_views.scss';
+@import './custom.scss';
+@import './map.scss';
+
 /** your custom css code **/
 .portfoliokey-piechart {
   .CircularProgressbar-trail {
@@ -19,7 +20,7 @@
   border-radius: 0 !important;
 }
 body {
-  font-family: "Nunito", sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
 }
 .btn-outline-success {
   border: none !important;
@@ -381,7 +382,7 @@ td {
   margin-bottom: 20px;
   position: relative;
 
-  font-family: "simple-line-icons";
+  font-family: 'simple-line-icons';
   font-weight: 700;
 }
 .rsb {
@@ -395,11 +396,11 @@ td {
 .row-details {
   h3 {
     font-weight: 700;
-    font-family: "simple-line-icons";
+    font-family: 'simple-line-icons';
   }
   h4 {
     font-weight: 700;
-    font-family: "simple-line-icons";
+    font-family: 'simple-line-icons';
   }
 }
 .alert-custom {
@@ -444,4 +445,35 @@ td {
   .CircularProgressbar-text {
     font-size: 10px !important;
   }
+}
+
+.single-details {
+  background: #cff7e1;
+  padding: 8px 0;
+  font-weight: 700;
+  color: black;
+
+  h2 {
+    line-height: 2;
+  }
+  .left-icon-holder {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #00e396;
+    color: white;
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+    }
+  }
+}
+
+.suport-item {
+  padding: 10px 5px;
+  background: #80808070;
 }

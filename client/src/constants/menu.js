@@ -86,19 +86,12 @@ const data = [
     label: 'Portfolio  Key',
     to: `${adminRoot}/portfolio-key`,
     // roles: [UserRole.Admin],
-  },
-  {
-    icon: 'simple-icon-briefcase',
-    id: 'Portfolio  Score',
-    label: 'Portfolio  Score',
-    to: `${adminRoot}/portfolio-score`,
-    // roles: [UserRole.Admin],
-  },
+  }, 
   {
     icon: 'simple-icon-briefcase',
     label: ' GEO Analytics',
     id: ' GEO Analytics',
-    to: `${adminRoot}/workprogram/mission-geo-analytics`,
+    to: `${adminRoot}/mission-geo-analytics`,
     // roles: [UserRole.Admin],
   },
 ];

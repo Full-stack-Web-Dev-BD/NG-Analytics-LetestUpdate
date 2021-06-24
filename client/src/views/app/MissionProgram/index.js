@@ -24,10 +24,6 @@ const KPIDashboard = ({ match }) => (
                 render={(props) => <MissionPlan {...props} />}
             />
             <Route
-                path={`${match.url}/mission-geo-analytics`}
-                render={(props) => <MissionGeoAnalytics {...props} />}
-            />
-            <Route
                 path={`${match.url}/ui`}
                 render={(props) => <IconsUi {...props} />}
             />

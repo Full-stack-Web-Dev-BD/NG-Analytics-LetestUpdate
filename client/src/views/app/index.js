@@ -28,6 +28,7 @@ const Ui = React.lazy(() => import(/* webpackChunkName: "ui" */ './ui'));
 const Menu = React.lazy(() => import(/* webpackChunkName: "menu" */ './menu'));
 import PortfolioKey from './PortFolioKey/PortfolioKey';
 import PortfolioScore from './PortfolioScore/PortfolioScore';
+import MissionGeoAnalytics from './MissionProgram/MissionGeoAnalytics/MissionGeoAnalytics';
 const BlankPage = React.lazy(() =>
   import(/* webpackChunkName: "blank-page" */ './blank-page')
 );
@@ -88,6 +89,11 @@ const App = ({ match }) => {
             <Route
               path={`${match.url}/portfolio-score`}
               render={(props) => <PortfolioScore {...props} />}
+            />
+            
+            <Route
+                path={`${match.url}/mission-geo-analytics`}
+                render={(props) => <MissionGeoAnalytics {...props} />}
             />
             {/* <Redirect to="/error" /> */}
           </Switch>
