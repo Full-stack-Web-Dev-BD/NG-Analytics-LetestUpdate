@@ -1,29 +1,40 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import HighchartsReact from 'highcharts-react-official';
-import Highcharts from 'highcharts'
-import HighchartMore from "highcharts/highcharts-more";
-HighchartMore(Highcharts)
 
-const GeoMissionActivityChart = () => {
-  const chartRef = useRef(null);
-
-  const op ={
-    colors: ['#FFD700', '#C0C0C0', '#CD7F32'],
+const PortfolioHelthFlaggedTypeChart = () => {
+  const op = {
+    colors: ['#21C36A', '#F53201', '#FFBF61'],
     chart: {
+      height: '140px',
       type: 'column',
       inverted: true,
-      polar: true
+      polar: true,
+      backgroundColor: 'transparent',
     },
     title: {
-      text: 'Winter Olympic medals per existing country (TOP 5)'
+      text: '',
     },
     tooltip: {
-      outside: true
+      outside: true,
     },
     pane: {
       size: '85%',
       innerSize: '20%',
-      endAngle: 270
+      endAngle: 270,
+    },
+    exporting: {
+      buttons: {
+        contextButton: {
+          menuItems: [
+            'printChart',
+            'separator',
+            'downloadPNG',
+            'downloadJPEG',
+            'downloadPDF',
+            'downloadSVG',
+          ],
+        },
+      },
     },
     xAxis: {
       tickInterval: 1,
@@ -34,57 +45,59 @@ const GeoMissionActivityChart = () => {
         step: 1,
         y: 3,
         style: {
-          fontSize: '13px'
-        }
+          fontSize: '13px',
+        },
       },
       lineWidth: 0,
       categories: [
-        'Norway <span class="f16"><span id="flag" class="flag no">' +
-        '</span></span>',
-        'United States <span class="f16"><span id="flag" class="flag us">' +
-        '</span></span>',
-        'Germany <span class="f16"><span id="flag" class="flag de">' +
-        '</span></span>',
-        'Canada <span class="f16"><span id="flag" class="flag ca">' +
-        '</span></span>',
-        'Austria <span class="f16"><span id="flag" class="flag at">' +
-        '</span></span>'
-      ]
+        'Agric <span class="f16"><span id="flag" class="flag no">' +
+          '</span></span>',
+        'Water Suplly <span class="f16"><span id="flag" class="flag us">' +
+          '</span></span>',
+        'Finance <span class="f16"><span id="flag" class="flag de">' +
+          '</span></span>',
+        'Transport <span class="f16"><span id="flag" class="flag ca">' +
+          '</span></span>',
+        'Energy <span class="f16"><span id="flag" class="flag at">' +
+          '</span></span>',
+        'Multi-Sector <span class="f16"><span id="flag" class="flag at">' +
+          '</span></span>',
+      ],
     },
     yAxis: {
       crosshair: {
         enabled: true,
-        color: '#333'
+        color: '#000',
       },
       lineWidth: 0,
       tickInterval: 25,
       reversedStacks: false,
       endOnTick: true,
-      showLastLabel: true
+      showLastLabel: true,
     },
     plotOptions: {
       column: {
         stacking: 'normal',
         borderWidth: 0,
         pointPadding: 0,
-        groupPadding: 0.15
-      }
+        groupPadding: 0.15,
+      },
     },
-    series: [{
-      type:'colum', 
-      data:[1, 2, 3, 4, 5]
-    }]
-  }
+    series: [
+      {
+        name: 'Satisfactory ',
+        data: [125, 110, 86],
+      },
+    ],
+    legend: {
+      enabled: false,
+    },
+  };
   return (
     <div>
-      <HighchartsReact
-        constructorType="ganttChart"
-        highcharts={Highcharts}
-        options={op}
-        ref={chartRef}
-      />    
+      <HighchartsReact highcharts={Highcharts} options={op} />
     </div>
   );
 };
 
-export default GeoMissionActivityChart;
+export default PortfolioHelthFlaggedTypeChart;

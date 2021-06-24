@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 import HighchartsReact from 'highcharts-react-official';
-
-
 
 const PortfolioHelthFlaggedTypeChart = () => {
   const op = {
@@ -10,7 +8,7 @@ const PortfolioHelthFlaggedTypeChart = () => {
       type: 'column',
       inverted: true,
       polar: true,
-      backgroundColor:'transparent',
+      backgroundColor: 'transparent',
     },
     title: {
       text: '',
@@ -24,18 +22,18 @@ const PortfolioHelthFlaggedTypeChart = () => {
       endAngle: 270,
     },
     exporting: {
-        buttons: {
-            contextButton: {
-                menuItems: [
-                    'printChart',
-                    'separator',
-                    'downloadPNG',
-                    'downloadJPEG',
-                    'downloadPDF',
-                    'downloadSVG'
-                ]
-            }
-        }
+      buttons: {
+        contextButton: {
+          menuItems: [
+            'printChart',
+            'separator',
+            'downloadPNG',
+            'downloadJPEG',
+            'downloadPDF',
+            'downloadSVG',
+          ],
+        },
+      },
     },
     xAxis: {
       tickInterval: 1,
@@ -101,12 +99,9 @@ const PortfolioHelthFlaggedTypeChart = () => {
   };
   return (
     <div>
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={op}
-      />
+      <HighchartsReact highcharts={Highcharts} options={op} />
     </div>
   );
-}
+};
 
-export default PortfolioHelthFlaggedTypeChart
+export default PortfolioHelthFlaggedTypeChart;
