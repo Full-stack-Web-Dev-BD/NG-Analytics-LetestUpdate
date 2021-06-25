@@ -495,27 +495,27 @@ const MissionGeoAnalytics = () => {
                 <div className="row"></div>
                 <div className="top-content-details">
                   <div className="single-details mb-3 row">
-                    <div className="col-md-2">
+                    <div className=" col-xs-2 col-sm-2 col-md-2 ">
                       <div className=" left-icon-holder ">
                         <span className="glyph-icon simple-icon-layers"></span>
                       </div>
                     </div>
-                    <div className="col-md-10 text-left ">
+                    <div className="col-xs-10 col-sm-10 text-left ">
                       <h2>Ovarall Portfolio : US $5 Billion</h2>
                     </div>
                   </div>
                   <div className="single-details mb-3 row">
-                    <div className="col-md-2">
+                    <div className=" col-xs-2 col-sm-2 col-md-2 ">
                       <div className=" left-icon-holder ">
                         <span className="glyph-icon simple-icon-layers"></span>
                       </div>
                     </div>
-                    <div className="col-md-10 text-left ">
+                    <div className="col-xs-10 col-sm-10 text-left ">
                       <h2>Ovarall Portfolio : US $5 Billion</h2>
                     </div>
                   </div>
                 </div>
-                <div className="middle-content">
+                <div className="middle-content mb-3">
                   <div className="row mb-1 ">
                     <div className="col-md-8">
                       <div className="tech-suport mb-3">
@@ -561,34 +561,34 @@ const MissionGeoAnalytics = () => {
                 </div>
                 <div className="bottom-details">
                   <div className="single-details mb-3 row">
-                    <div className="col-md-2">
+                    <div className=" col-xs-2 col-sm-2 col-md-2 ">
                       <div className=" left-icon-holder ">
                         <span className="glyph-icon simple-icon-layers"></span>
                       </div>
                     </div>
-                    <div className="col-md-10 text-left ">
+                    <div className="col-xs-10 col-sm-10 text-left ">
                       <h2>US$ 3 Billion disbursed in 2010-2018</h2>
                     </div>
                   </div>
 
                   <div className="single-details mb-3 row">
-                    <div className="col-md-2">
+                    <div className=" col-xs-2 col-sm-2 col-md-2 ">
                       <div className=" left-icon-holder ">
                         <span className="glyph-icon simple-icon-layers"></span>
                       </div>
                     </div>
-                    <div className="col-md-10 text-left ">
+                    <div className="col-xs-10 col-sm-10 text-left ">
                       <h2>US$ 2 Billion Disbursed (Private Investment) </h2>
                     </div>
                   </div>
 
                   <div className="single-details mb-3 row">
-                    <div className="col-md-2">
+                    <div className=" col-xs-2 col-sm-2 col-md-2 ">
                       <div className=" left-icon-holder ">
                         <span className="glyph-icon simple-icon-layers"></span>
                       </div>
                     </div>
-                    <div className="col-md-10 text-left ">
+                    <div className="col-xs-10 col-sm-10 text-left ">
                       <h2>US$ 1 Billion Disbursed (Public Investment)</h2>
                     </div>
                   </div>
