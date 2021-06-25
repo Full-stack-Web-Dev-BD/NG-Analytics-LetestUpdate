@@ -5,24 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 HC_exporting(Highcharts);
 
-var pieColors = (function () {
-  var colors = [],
-    base = Highcharts.getOptions().colors[0],
-    i;
-
-  for (i = 0; i < 10; i += 1) {
-    // Start out with a darkened base color (negative brighten), and end
-    // up with a much brighter color
-    colors.push(
-      Highcharts.color(base)
-        .brighten((i - 3) / 7)
-        .get()
-    );
-  }
-  return colors;
-})();
-
-const BreakDownChart = () => {
+const HighFiveChart = () => {
   const chartRef = useRef(null);
 
   const option = {
@@ -47,44 +30,41 @@ const BreakDownChart = () => {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
-        colors: pieColors,
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
-          distance: -50,
-          filter: {
-            property: 'percentage',
-            operator: '>',
-            value: 4,
-          },
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
         },
       },
     },
     series: [
       {
-        name: 'Share',
+        name: 'Brands',
+        colorByPoint: true,
         data: [
           {
-            name: 'ADB',
+            name: 'Improve Quality of Life',
             y: 30,
           },
           {
-            name: 'ADF',
-            y: 40,
+            name: 'Feed Africa',
+            y: 22,
           },
           {
-            name: 'AGTF',
+            name: 'LightUp and Power Africa',
             y: 20,
           },
           {
-            name: 'Other',
-            y: 10,
+            name: 'Industrialize Africa',
+            y: 15,
+          },
+          {
+            name: 'Integrate Africa',
+            y: 13,
           },
         ],
       },
     ],
   };
-
   return (
     <div>
       <HighchartsReact
@@ -96,4 +76,4 @@ const BreakDownChart = () => {
   );
 };
 
-export default BreakDownChart;
+export default HighFiveChart;

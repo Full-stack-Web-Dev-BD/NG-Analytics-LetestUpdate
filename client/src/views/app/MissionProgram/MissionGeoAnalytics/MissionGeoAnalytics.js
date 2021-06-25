@@ -7,6 +7,10 @@ import GeoMissionActivityChart from './GeoMissionActivityChart';
 import * as XLSX from 'xlsx';
 import axios from 'axios';
 import Markers1 from './Map/components/Markers1';
+import NagativeStackChart from './NagativeStackChart';
+import SpiderChart from './SpiderChart';
+import HighFiveChart from './HighFiveChart';
+import SectoralChart from './SectoralChart';
 
 const MissionGeoAnalytics = () => {
   const [map, setMap] = useState(null);
@@ -614,32 +618,6 @@ const MissionGeoAnalytics = () => {
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                     <Markers1 />
                   </MapContainer>
-
-                  {/* {showMap ? (
-                    <>
-                      {projects.length > 0 ? (
-                        <MapContainer
-                          scrollWheelZoom={false}
-                          whenCreated={setMap}
-                          center={{ lat: 3.551223, lng: 28.356148 }}
-                          zoom={4}
-                        >
-                          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                          <DangerMarker
-                            selectedState={selectedState}
-                            projects={projects}
-                          />
-                          <GreenMarker />
-                          <SecenderyMarker />
-                          <WarningMarker />
-                        </MapContainer>
-                      ) : (
-                        ''
-                      )}
-                    </>
-                  ) : (
-                    ''
-                  )} */}
                 </div>
               </div>
               <div className="map-status-bar ">
@@ -810,6 +788,61 @@ const MissionGeoAnalytics = () => {
       <div className="row">
         <div className="col-12">
           <FoodTable />
+        </div>
+      </div>
+      <div className="row mt-5">
+        <div className=" col-sm-12 col-md-12 col-xl-6">
+          <Card className="h-100">
+            <CardBody>
+              <div className="alert alert-success text-center alert-custom">
+                <h3>
+                  Age distribution of Portfolio by sovereign and non-sovereign
+                  Portfolio
+                </h3>
+              </div>
+              <NagativeStackChart />
+            </CardBody>
+          </Card>
+        </div>
+        <div className=" col-sm-12 col-md-12 col-xl-6">
+          <Card className="h-100">
+            <CardBody>
+              <div className="alert alert-success text-center alert-custom">
+                <h3>
+                  Portfolio Distribution across the six GeoPolitical Zones
+                </h3>
+              </div>
+              <SpiderChart />
+            </CardBody>
+          </Card>
+        </div>
+      </div>
+
+      <div className="row mt-5">
+        <div className=" col-sm-12 col-md-12 col-xl-6">
+          <Card className="h-100">
+            <CardBody>
+              <div className="alert alert-success text-center alert-custom">
+                <h3>
+                  Age distribution of Portfolio by sovereign and non-sovereign
+                  Portfolio
+                </h3>
+              </div>
+              <SectoralChart />
+            </CardBody>
+          </Card>
+        </div>
+        <div className=" col-sm-12 col-md-12 col-xl-6">
+          <Card className="h-100">
+            <CardBody>
+              <div className="alert alert-success text-center alert-custom">
+                <h3>
+                  Portfolio Distribution across the six GeoPolitical Zones
+                </h3>
+              </div>
+              <HighFiveChart />
+            </CardBody>
+          </Card>
         </div>
       </div>
     </div>

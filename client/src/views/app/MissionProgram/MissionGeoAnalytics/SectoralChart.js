@@ -5,24 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 HC_exporting(Highcharts);
 
-var pieColors = (function () {
-  var colors = [],
-    base = Highcharts.getOptions().colors[0],
-    i;
-
-  for (i = 0; i < 10; i += 1) {
-    // Start out with a darkened base color (negative brighten), and end
-    // up with a much brighter color
-    colors.push(
-      Highcharts.color(base)
-        .brighten((i - 3) / 7)
-        .get()
-    );
-  }
-  return colors;
-})();
-
-const BreakDownChart = () => {
+const SectoralChart = () => {
   const chartRef = useRef(null);
 
   const option = {
@@ -47,44 +30,57 @@ const BreakDownChart = () => {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
-        colors: pieColors,
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
-          distance: -50,
-          filter: {
-            property: 'percentage',
-            operator: '>',
-            value: 4,
-          },
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
         },
       },
     },
     series: [
       {
-        name: 'Share',
+        name: 'Brands',
+        colorByPoint: true,
         data: [
           {
-            name: 'ADB',
-            y: 30,
+            name: 'Agriculture',
+            y: 9,
           },
           {
-            name: 'ADF',
-            y: 40,
+            name: 'Environment',
+            y: 1,
           },
           {
-            name: 'AGTF',
+            name: "Finance, SMEs & Private Sector Dev't",
+            y: 39,
+          },
+          {
+            name: 'Industry',
+            y: 2,
+          },
+          {
+            name: 'Multi-Sector Investment',
             y: 20,
           },
           {
-            name: 'Other',
-            y: 10,
+            name: 'Power',
+            y: 16,
+          },
+          {
+            name: "Social & Human Dev't.",
+            y: 1.2,
+          },
+          {
+            name: 'Transport',
+            y: 0,
+          },
+          {
+            name: 'Water & Sanitation',
+            y: 6,
           },
         ],
       },
     ],
   };
-
   return (
     <div>
       <HighchartsReact
@@ -96,4 +92,4 @@ const BreakDownChart = () => {
   );
 };
 
-export default BreakDownChart;
+export default SectoralChart;
