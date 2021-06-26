@@ -1,6 +1,6 @@
 import React from 'react';
 import HighchartsReact from 'highcharts-react-official';
-
+import Highcharts from 'highcharts';
 const PortfolioHelthFlaggedTypeChart = () => {
   const op = {
     colors: ['#21C36A', '#F53201', '#FFBF61'],

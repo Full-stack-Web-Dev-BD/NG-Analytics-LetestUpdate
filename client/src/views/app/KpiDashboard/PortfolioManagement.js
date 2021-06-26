@@ -16,6 +16,8 @@ import HighcahrtSparkline from '../ui/components/HighchartSparkline';
 import SparkLineChartHighchart from '../ui/components/Sparkline/SparklineChart';
 import PortfolioHelthFlaggedTypeChart from '../ui/components/PortfolioHelthFlaggedTypeChart';
 import BandWorkloadParetoChart from './BandWorkloadParetoChart';
+import PortfolioHealthChart from './PortfolioHealthChart';
+import TrendPortfolioHealthChart from './TrendPortfolioHealthChart';
 
 const PortfolioManagement = ({ intl, match }) => {
   const { messages } = intl;
@@ -32,7 +34,14 @@ const PortfolioManagement = ({ intl, match }) => {
       </Row>
       <Row>
         <Colxx sm="12" md="12" lg="6" xl="6" className="mb-4">
-          <ProductCategoriesPolarArea />
+          <Card className="h-100">
+            <CardBody>
+              <CardTitle>
+                <IntlMessages id="Overall Portfolio Health (%) " />
+              </CardTitle>
+              <PortfolioHealthChart />
+            </CardBody>
+          </Card>
         </Colxx>
         <Colxx sm="12" md="12" lg="6" xl="6" className="mb-4">
           <Card className="h-100">
@@ -55,7 +64,7 @@ const PortfolioManagement = ({ intl, match }) => {
                   colors={['#21C36A', '#F53201', '#FFBF61']}
                   lebel={['Satisfactory', 'Flagged', 'Watchlist']}
                 />
-                <ThreeStrokeChart />
+                <TrendPortfolioHealthChart />
               </div>
             </CardBody>
           </Card>
